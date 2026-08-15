@@ -388,14 +388,22 @@ img {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.logo-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo-icon {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-sm);
   background: var(--gradient-primary);
   display: flex;
@@ -403,8 +411,94 @@ img {
   justify-content: center;
   color: #040810;
   font-weight: 900;
+  font-size: 1.25rem;
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-logo:hover .logo-icon {
+  transform: scale(1.12) rotate(8deg);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.85);
+}
+
+.logo-pulse-ring {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: calc(var(--radius-sm) + 4px);
+  border: 1.5px solid rgba(0, 255, 157, 0.6);
+  animation: pulseRing 2.5s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.15;
+    border-color: rgba(0, 229, 255, 0.8);
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-main);
+  font-weight: 900;
   font-size: 1.3rem;
-  box-shadow: 0 0 18px rgba(0, 255, 157, 0.45);
+  letter-spacing: -0.01em;
+}
+
+.animated-gradient-text {
+  background: linear-gradient(135deg, #00ff9d 0%, #00e5ff 40%, #ffb703 75%, #00ff9d 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logoGradientMove 4s ease infinite;
+}
+
+@keyframes logoGradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.brand-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 255, 157, 0.12);
+  color: var(--color-primary);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+  letter-spacing: 0.05em;
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+  animation: badgeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 255, 157, 0.2);
+    border-color: rgba(0, 255, 157, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.6);
+    border-color: rgba(0, 229, 255, 0.6);
+  }
 }
 
 .nav-links {
