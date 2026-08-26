@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | M-Accessories & Gadgets — Quality You Can Trust</title>
+  <meta name="description" content="Learn about M-Accessories & Gadgets — Nigeria's trusted source for premium smartphones, gadgets, and tech accessories with industry-leading warranty coverage.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Subpage layout */
+    .subpage-hero {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .subpage-hero .badge { margin-bottom: 1rem; display: inline-block; }
+    .subpage-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .subpage-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .subpage-content {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+    .back-home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 2rem;
+      transition: var(--transition-fast);
+    }
+    .back-home-link:hover { opacity: 0.8; transform: translateX(-3px); }
+
+    /* About blocks */
+    .about-block {
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: var(--transition-normal);
+    }
+    .about-block:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 8px 40px rgba(0, 255, 157, 0.06);
+    }
+    .about-block h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .about-block h2 .icon { font-size: 1.3rem; }
+    .about-block p, .about-block li {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+    .about-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.8rem 0 0;
+    }
+    .about-block ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.55rem;
+    }
+    .about-block ul li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+      font-size: 0.7rem;
+      top: 0.35rem;
+    }
+    .about-block p + p { margin-top: 0.8rem; }
+
+    /* Mission cards grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .value-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      text-align: center;
+      transition: var(--transition-normal);
+    }
+    .value-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 255, 157, 0.08);
+    }
+    .value-card .value-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .value-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+    .value-card p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.65;
+    }
+
+    /* Warranty tiers table */
+    .warranty-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+    }
+    .warranty-table th,
+    .warranty-table td {
+      padding: 1rem 1.2rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .warranty-table th {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(0, 255, 157, 0.04);
+    }
+    .warranty-table td {
+      color: var(--text-muted);
+    }
+    .warranty-table tr:hover td {
+      color: var(--text-main);
+      background: rgba(0, 255, 157, 0.02);
+    }
+    .warranty-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .warranty-gold { background: rgba(255, 193, 7, 0.15); color: #ffc107; }
+    .warranty-platinum { background: rgba(0, 255, 157, 0.12); color: var(--accent-cyan); }
+    .warranty-standard { background: rgba(255, 255, 255, 0.08); color: var(--text-muted); }
+
+    /* Highlight stat strip */
+    .about-stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .about-stat {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .about-stat .stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .about-stat .stat-label {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Floating Background Effect -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="navbar" id="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="brand-logo-link">
+        <div class="logo-icon-wrapper">
+          <div class="logo-icon">M</div>
+          <span class="logo-pulse-ring"></span>
+        </div>
+        <span class="brand-text">M-<span class="animated-gradient-text">GADGETS</span><span class="brand-badge">PRO</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#catalog" class="nav-link">Products & Gadgets</a></li>
+        <li><a href="about.html" class="nav-link active">About Us</a></li>
+        <li><a href="privacy.html" class="nav-link">Privacy Policy</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html#catalog" class="btn btn-primary nav-shop-btn">Shop Gear</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="subpage-hero">
+    <span class="badge badge-cyan">🏆 Quality You Can Trust</span>
+    <h1>About <span class="gradient-text">M-Gadgets</span></h1>
+    <p>We deliver the best quality gadgets, smartphones, and tech accessories with industry-leading warranty coverage — because your satisfaction is everything.</p>
+  </section>
+
+  <!-- Content -->
+  <div class="subpage-content">
+    <a href="index.html" class="back-home-link">← Back to Store</a>
+
+    <!-- Stats Strip -->
+    <div class="about-stats-strip">
+      <div class="about-stat">
+        <div class="stat-num">125K+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Genuine Products</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-num">2 Years</div>
+        <div class="stat-label">Official Warranty</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Customer Support</div>
+      </div>
+    </div>
+
+    <!-- Our Story -->
+    <div class="about-block">
+      <h2><span class="icon">📖</span> Our Story</h2>
+      <p>M-Accessories & Gadgets was founded with a simple but powerful mission: to bring <strong>premium-quality technology and gadgets</strong> to everyday people at fair, accessible prices. We saw a gap in the market — customers were paying top prices but getting substandard products with no warranty support. We set out to change that.</p>
+      <p>Today, we're one of the most trusted tech accessory brands, serving over <strong>125,000 satisfied customers</strong> across Nigeria and West Africa. Every product in our catalogue is handpicked, rigorously tested, and backed by our industry-leading warranty — because we believe that when you invest in tech, it should work perfectly, last long, and look great while doing it.</p>
+    </div>
+
+    <!-- Why Best Quality -->
+    <div class="about-block">
+      <h2><span class="icon">💎</span> Why Our Products Are the Best Quality</h2>
+      <p>Quality isn't just a buzzword for us — it's built into every step of our process:</p>
+      <ul>
+        <li><strong>Direct Manufacturer Partnerships:</strong> We source directly from authorised manufacturers and brand partners, eliminating middlemen and ensuring 100% genuine products.</li>
+        <li><strong>Multi-Stage Quality Testing:</strong> Every batch undergoes rigorous testing — from stress testing power banks at full discharge cycles, to drop-testing cases, to audio calibration for earbuds — before reaching your hands.</li>
+        <li><strong>Premium Materials Only:</strong> Carbon fibre, aircraft-grade aluminium, genuine leather, sapphire glass, Kevlar aramid — we never compromise on build quality.</li>
+        <li><strong>International Certifications:</strong> Our products carry CE, FCC, RoHS, and MFi (Made for iPhone) certifications where applicable.</li>
+        <li><strong>Real Customer Ratings:</strong> With an average of <strong>4.9 out of 5 stars</strong> across all products, our quality speaks for itself. Every review on our store is from a verified buyer.</li>
+      </ul>
+    </div>
+
+    <!-- Warranty Coverage -->
+    <div class="about-block">
+      <h2><span class="icon">🛡️</span> Our Industry-Leading Warranty</h2>
+      <p>We stand behind every product we sell with comprehensive warranty coverage that goes beyond what other retailers offer. When you buy from M-Gadgets, you're protected:</p>
+
+      <table class="warranty-table">
+        <thead>
+          <tr>
+            <th>Product Category</th>
+            <th>Warranty Period</th>
+            <th>Coverage Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Flagship Smartphones</td>
+            <td><strong>24 Months</strong></td>
+            <td><span class="warranty-badge warranty-platinum">⚡ Platinum</span></td>
+          </tr>
+          <tr>
+            <td>Power Banks & Chargers</td>
+            <td><strong>18 Months</strong></td>
+            <td><span class="warranty-badge warranty-gold">🏆 Gold</span></td>
+          </tr>
+          <tr>
+            <td>Wireless Earbuds & Audio</td>
+            <td><strong>12 Months</strong></td>
+            <td><span class="warranty-badge warranty-gold">🏆 Gold</span></td>
+          </tr>
+          <tr>
+            <td>Drones & Projectors</td>
+            <td><strong>18 Months</strong></td>
+            <td><span class="warranty-badge warranty-platinum">⚡ Platinum</span></td>
+          </tr>
+          <tr>
+            <td>Cases, Pouches & Accessories</td>
+            <td><strong>6 Months</strong></td>
+            <td><span class="warranty-badge warranty-standard">✓ Standard</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Warranty Details -->
+    <div class="about-block">
+      <h2><span class="icon">📋</span> What Our Warranty Covers</h2>
+      <ul>
+        <li><strong>Manufacturing Defects:</strong> Any fault arising from the manufacturing process, including dead pixels, battery failures, circuit malfunctions, and material defects.</li>
+        <li><strong>Battery Degradation:</strong> If your battery capacity drops below 80% within the warranty period, we replace it free of charge.</li>
+        <li><strong>Component Failures:</strong> Charging ports, buttons, speakers, microphones, and internal components that fail under normal use.</li>
+        <li><strong>Free Replacement:</strong> If a product cannot be repaired, we provide a full replacement or store credit — no questions asked.</li>
+        <li><strong>Express Claim Processing:</strong> Warranty claims are processed within 48 hours of submission. We respect your time.</li>
+      </ul>
+      <p style="margin-top: 1.2rem;"><strong>Not covered:</strong> Physical damage from drops/accidents, water damage (unless the product is rated IP68), unauthorised modifications, or cosmetic wear.</p>
+    </div>
+
+    <!-- Core Values -->
+    <div class="about-block">
+      <h2><span class="icon">⭐</span> Our Core Values</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-icon">🔒</span>
+          <h3>Trust & Transparency</h3>
+          <p>No hidden fees, no fake specs. What you see is exactly what you get — genuine products, honest pricing.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🚀</span>
+          <h3>Innovation First</h3>
+          <p>We curate the latest tech and cutting-edge gadgets so you always have access to what's next.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">💪</span>
+          <h3>Built to Last</h3>
+          <p>Every product is stress-tested and built from premium materials to withstand daily use.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">❤️</span>
+          <h3>Customer Obsessed</h3>
+          <p>24/7 support, hassle-free returns, and a community of 125K+ happy buyers drive everything we do.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to Claim Warranty -->
+    <div class="about-block">
+      <h2><span class="icon">🔧</span> How to Claim Your Warranty</h2>
+      <p>Filing a warranty claim with M-Gadgets is simple and fast:</p>
+      <ul>
+        <li><strong>Step 1:</strong> Contact us via email at <strong>warranty@m-gadgets.com</strong> or call <strong>+234 800 GADGETS</strong>.</li>
+        <li><strong>Step 2:</strong> Provide your order number, product name, and a brief description or photo of the issue.</li>
+        <li><strong>Step 3:</strong> Our team will review your claim within <strong>24 hours</strong> and issue a resolution (repair, replacement, or credit).</li>
+        <li><strong>Step 4:</strong> Ship the item to our service centre (we cover return shipping on Platinum-tier products).</li>
+        <li><strong>Step 5:</strong> Receive your repaired/replaced product within <strong>5-7 business days</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="about-block">
+      <h2><span class="icon">📬</span> Get in Touch</h2>
+      <p>Have questions about our products, warranty, or anything else? We'd love to hear from you.</p>
+      <ul>
+        <li><strong>General Enquiries:</strong> hello@m-gadgets.com</li>
+        <li><strong>Warranty & Returns:</strong> warranty@m-gadgets.com</li>
+        <li><strong>Phone:</strong> +234 800 GADGETS (423-4387)</li>
+        <li><strong>WhatsApp:</strong> +234 901 234 5678</li>
+        <li><strong>Address:</strong> M-Accessories & Gadgets HQ, Victoria Island, Lagos, Nigeria</li>
+        <li><strong>Business Hours:</strong> Monday – Saturday, 8:00 AM – 9:00 PM WAT</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 M-Accessories & Gadgets Inc. All Rights Reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="about.html">About Us</a>
+          <a href="index.html">Back to Store</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
